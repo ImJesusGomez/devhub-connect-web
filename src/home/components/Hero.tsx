@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <div className="relative py-12 sm:py-16 lg:py-20 bg-[url('/hero.gif')] bg-cover bg-center ">
+    <div className="relative py-12 sm:py-16 lg:py-20 bg-[url('/hero.gif')] bg-cover bg-center h-screen flex items-center">
       {/* Overlay oscuro */}
       <div className="absolute inset-0 bg-gray-900/70"></div>
 
@@ -18,7 +18,7 @@ export const Hero = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid max-w-md grid-cols-2 mx-auto mt-8 md:mt-16 lg:mt-24 xl:mt-24 gap-x-6">
+          <div className="grid max-w-2xl grid-cols-3 mx-auto mt-8 md:mt-16 lg:mt-24 xl:mt-24 gap-x-6">
             <div>
               <p className="text-4xl font-bold text-white">+2,000</p>
               <p className="mt-2 text-sm font-medium text-gray-300">Programadores registrados</p>
@@ -28,6 +28,13 @@ export const Hero = () => {
               <p className="text-4xl font-bold text-white">+100</p>
               <p className="mt-2 text-sm font-medium text-gray-300">
                 Ofertas laborales a la semana
+              </p>
+            </div>
+
+            <div>
+              <p className="text-4xl font-bold text-white">+30</p>
+              <p className="mt-2 text-sm font-medium text-gray-300">
+                Empresas buscando programadores
               </p>
             </div>
           </div>

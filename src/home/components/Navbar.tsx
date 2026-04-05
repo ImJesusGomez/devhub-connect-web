@@ -38,7 +38,7 @@ export const Navbar = () => {
           {/* Inicio */}
           <NavigationMenuItem>
             <NavigationMenuLink
-              render={<Link to={"/"} />}
+              render={<a href="#about-us" />}
               className={`
                 ${navigationMenuTriggerStyle()}
                 text-white mr-2
