@@ -58,11 +58,13 @@ export const Navbar = () => {
               render={<Link to={"/"} />}
               className={`
                 ${navigationMenuTriggerStyle()}
-                text-white             
-                active:bg-cyan-600
-                focus:bg-cyan-700
-                data-active:bg-cyan-700
-                data-[state=open]:bg-cyan-700
+                text-white     
+                bg-cyan-700      
+                hover:bg-cyan-800  
+                active:bg-cyan-800
+                focus:bg-cyan-800
+                data-active:bg-cyan-800
+                data-[state=open]:bg-cyan-800
                 `}
             >
               Iniciar Sesión

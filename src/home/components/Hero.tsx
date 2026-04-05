@@ -18,7 +18,7 @@ export const Hero = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid max-w-md grid-cols-2 mx-auto mt-8 md:mt-16 lg:mt-24 xl:mt-32 gap-x-6">
+          <div className="grid max-w-md grid-cols-2 mx-auto mt-8 md:mt-16 lg:mt-24 xl:mt-24 gap-x-6">
             <div>
               <p className="text-4xl font-bold text-white">+2,000</p>
               <p className="mt-2 text-sm font-medium text-gray-300">Programadores registrados</p>
