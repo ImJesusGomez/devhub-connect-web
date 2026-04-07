@@ -10,12 +10,6 @@ import { Link } from "react-router";
 export const Navbar = () => {
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(/devhub.svg)`,
-        }}
-      ></div>
-
       <NavigationMenu>
         <NavigationMenuList>
           {/* Inicio */}
@@ -55,7 +49,7 @@ export const Navbar = () => {
           {/* Inicio */}
           <NavigationMenuItem>
             <NavigationMenuLink
-              render={<Link to={"/"} />}
+              render={<Link to={"/auth/login"} />}
               className={`
                 ${navigationMenuTriggerStyle()}
                 text-white     
