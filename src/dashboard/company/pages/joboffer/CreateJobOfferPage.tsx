@@ -18,6 +18,7 @@ import { InputErrors } from "@/components/custom/InputErrors";
 import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
 import { useGetProfile } from "@/hooks/useGetProfile";
 import { useCreateJobOffer } from "../../hooks/useCreateJobOffer";
+import { Link } from "react-router";
 
 export const CreateJobOfferPage = () => {
   const {
@@ -30,13 +31,13 @@ export const CreateJobOfferPage = () => {
   const { data: user } = useGetProfile();
   const { data: companyProfile } = useGetCompanyProfile(true, user?.id);
 
-  const creteJobOfferMutation = useCreateJobOffer();
+  const createJobOffer = useCreateJobOffer();
 
   if (!companyProfile) return;
 
   const onSubmit = async (data: CreateJobOfferInput) => {
     try {
-      const res = await creteJobOfferMutation.mutateAsync({
+      const res = await createJobOffer.mutateAsync({
         ...data,
         companyProfileID: companyProfile.id,
       });
@@ -48,6 +49,7 @@ export const CreateJobOfferPage = () => {
 
   return (
     <>
+      <Link to={"/company-dashboard/job-offers"}>Volver</Link>
       <h2 className="text-3xl font-bold mb-6">Crea una oferta laboral</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* position */}
