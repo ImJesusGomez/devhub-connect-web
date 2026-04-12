@@ -1,3 +1,4 @@
+import { queryClient } from "@/DevHubConnect";
 import type { User } from "@/interfaces/user.interface";
 import { create } from "zustand";
 
@@ -31,5 +32,6 @@ export const useAuthStore = create<AuthState>((set) => ({
   logout: () => {
     localStorage.clear();
     set({ user: null, accessToken: null });
+    queryClient.clear();
   },
 }));

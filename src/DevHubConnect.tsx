@@ -6,7 +6,8 @@ import { Toaster } from "sonner";
 import { useGetProfile } from "./hooks/useGetProfile";
 import { router } from "./router/app.router";
 
-const queryClient = new QueryClient();
+// eslint-disable-next-line react-refresh/only-export-components
+export const queryClient = new QueryClient();
 
 export const DevHubConnect = () => {
   return (

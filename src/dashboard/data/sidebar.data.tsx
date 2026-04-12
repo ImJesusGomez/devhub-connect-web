@@ -4,13 +4,13 @@ export const companyData = {
   profiles: [
     {
       title: "Perfil de Empresa",
-      url: "#",
+      url: "/company-dashboard/profile",
       icon: <Building2 />,
       isActive: true,
     },
     {
       title: "Perfil de Usuario",
-      url: "#",
+      url: "/company-dashboard/user",
       icon: <BotIcon />,
     },
   ],

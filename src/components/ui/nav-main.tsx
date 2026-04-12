@@ -11,6 +11,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { ChevronRightIcon } from "lucide-react";
+import { Link } from "react-router";
 
 type NavMainProps = {
   items: {
@@ -33,7 +34,7 @@ export function NavMain({ items, category }: NavMainProps) {
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible key={item.title} defaultOpen={item.isActive} render={<SidebarMenuItem />}>
-            <SidebarMenuButton tooltip={item.title} render={<a href={item.url} />}>
+            <SidebarMenuButton tooltip={item.title} render={<Link to={item.url} />}>
               {item.icon}
               <span>{item.title}</span>
             </SidebarMenuButton>

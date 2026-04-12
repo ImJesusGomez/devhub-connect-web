@@ -16,6 +16,7 @@ import {
 import { TerminalIcon } from "lucide-react";
 import { useAuthStore } from "@/store/auth.store";
 import { companyData, developerData } from "@/dashboard/data/sidebar.data";
+import { Link } from "react-router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const user = useAuthStore((state) => state.user) || null;
@@ -26,7 +27,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" render={<a href="#" />}>
+            <SidebarMenuButton size="lg" render={<Link to={"/company-dashboard"} />}>
               <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                 <TerminalIcon className="size-4" />
               </div>

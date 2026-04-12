@@ -2,6 +2,9 @@ import { AuthLayout } from "@/auth/layout/AuthLayout";
 import { LoginPage } from "@/auth/pages/login/LoginPage";
 import { SignupPage } from "@/auth/pages/signup/SignupPage";
 import { CompanyLayout } from "@/dashboard/company/layouts/CompanyLayout";
+import { CompanyProfilePage } from "@/dashboard/company/pages/profile/CompanyProfilePage";
+import { CreateProfileFormPage } from "@/dashboard/company/pages/profile/CreateProfileFormPage";
+import { UserProfile } from "@/dashboard/company/pages/profile/UserProfile";
 import { WelcomePage } from "@/dashboard/company/pages/WelcomePage";
 import { HomeLayout } from "@/home/layout/HomeLayout";
 import { HomePage } from "@/home/pages/HomePage";
@@ -39,6 +42,18 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <WelcomePage />,
+      },
+      {
+        path: "profile",
+        element: <CompanyProfilePage />,
+      },
+      {
+        path: "create-profile",
+        element: <CreateProfileFormPage />,
+      },
+      {
+        path: "user",
+        element: <UserProfile />,
       },
     ],
   },
