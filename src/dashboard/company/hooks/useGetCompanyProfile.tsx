@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCompanyProfile } from "../actions/get-company-profile.action";
 
-export const useGetCompanyProfile = (enabled: boolean, userId?: string) => {
+export const useGetCompanyProfile = (enabled?: boolean, userId?: string) => {
   return useQuery({
     queryKey: ["getCompanyProfile", userId],
     queryFn: getCompanyProfile,

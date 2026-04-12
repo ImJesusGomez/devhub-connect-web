@@ -17,7 +17,7 @@ export const companyData = {
   joboffers: [
     {
       title: "Mis Ofertas Laborales",
-      url: "#",
+      url: "/company-dashboard/job-offers",
       icon: <BriefcaseBusiness />,
     },
   ],

@@ -2,6 +2,8 @@ import { AuthLayout } from "@/auth/layout/AuthLayout";
 import { LoginPage } from "@/auth/pages/login/LoginPage";
 import { SignupPage } from "@/auth/pages/signup/SignupPage";
 import { CompanyLayout } from "@/dashboard/company/layouts/CompanyLayout";
+import { CreateJobOfferPage } from "@/dashboard/company/pages/joboffer/CreateJobOfferPage";
+import { JobOffersPage } from "@/dashboard/company/pages/joboffer/JobOffersPage";
 import { CompanyProfilePage } from "@/dashboard/company/pages/profile/CompanyProfilePage";
 import { CreateProfileFormPage } from "@/dashboard/company/pages/profile/CreateProfileFormPage";
 import { UserProfile } from "@/dashboard/company/pages/profile/UserProfile";
@@ -54,6 +56,14 @@ export const router = createBrowserRouter([
       {
         path: "user",
         element: <UserProfile />,
+      },
+      {
+        path: "job-offers",
+        element: <JobOffersPage />,
+      },
+      {
+        path: "create-job-offer",
+        element: <CreateJobOfferPage />,
       },
     ],
   },
