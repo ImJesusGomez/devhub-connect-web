@@ -34,13 +34,13 @@ export const developerData = {
   profiles: [
     {
       title: "Perfil de Desarrollador",
-      url: "#",
+      url: "/developer-dashboard/profile",
       icon: <Building2 />,
       isActive: true,
     },
     {
       title: "Perfil de Usuario",
-      url: "#",
+      url: "/developer-dashboard/user",
       icon: <BotIcon />,
     },
   ],

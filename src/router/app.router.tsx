@@ -7,10 +7,15 @@ import { JobOffersPage } from "@/dashboard/company/pages/joboffer/JobOffersPage"
 import { CompanyProfilePage } from "@/dashboard/company/pages/profile/CompanyProfilePage";
 import { CreateProfileFormPage } from "@/dashboard/company/pages/profile/CreateProfileFormPage";
 import { UserProfile } from "@/dashboard/company/pages/profile/UserProfile";
-import { WelcomePage } from "@/dashboard/company/pages/WelcomePage";
+import { WelcomePage as CompanyWelcomePage } from "@/dashboard/company/pages/WelcomePage";
+import { WelcomePage as DeveloperWelcomePage } from "@/dashboard/developer/pages/WelcomePage";
+import { DeveloperLayout } from "@/dashboard/developer/layouts/DeveloperLayout";
 import { HomeLayout } from "@/home/layout/HomeLayout";
 import { HomePage } from "@/home/pages/HomePage";
 import { createBrowserRouter } from "react-router";
+import { CreateDeveloperProfilePage } from "@/dashboard/developer/pages/profile/CreateDeveloperProfilePage";
+import { DeveloperUserPage } from "@/dashboard/developer/pages/profile/DeveloperUserPage";
+import { DeveloperProfilePage } from "@/dashboard/developer/pages/profile/DeveloperProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +48,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <WelcomePage />,
+        element: <CompanyWelcomePage />,
       },
       {
         path: "profile",
@@ -64,6 +69,28 @@ export const router = createBrowserRouter([
       {
         path: "create-job-offer",
         element: <CreateJobOfferPage />,
+      },
+    ],
+  },
+  {
+    path: "/developer-dashboard",
+    element: <DeveloperLayout />,
+    children: [
+      {
+        index: true,
+        element: <DeveloperWelcomePage />,
+      },
+      {
+        path: "profile",
+        element: <DeveloperProfilePage />,
+      },
+      {
+        path: "create-profile",
+        element: <CreateDeveloperProfilePage />,
+      },
+      {
+        path: "user",
+        element: <DeveloperUserPage />,
       },
     ],
   },
