@@ -15,7 +15,9 @@ import { Controller, useForm } from "react-hook-form";
 import type { CreateJobOfferInput } from "../../actions/create-job-offer.action";
 import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
 import { useCreateJobOffer } from "../../hooks/useCreateJobOffer";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useHasCompanyProfile } from "../../hooks/useHasCompanyProfile";
+import { useEffect } from "react";
 
 export const CreateJobOfferPage = () => {
   const {
@@ -25,17 +27,24 @@ export const CreateJobOfferPage = () => {
     formState: { errors, isSubmitting },
   } = useForm<CreateJobOfferInput>();
 
-  const { data: companyProfile } = useGetCompanyProfile();
+  const navigate = useNavigate();
 
   const createJobOffer = useCreateJobOffer();
 
-  if (!companyProfile) return;
+  const { data: companyProfile } = useGetCompanyProfile();
+  const { data: hasProfile, isLoading } = useHasCompanyProfile();
+
+  useEffect(() => {
+    if (!isLoading && hasProfile === false) {
+      navigate("/company-dashboard");
+    }
+  }, [hasProfile, isLoading, navigate]);
 
   const onSubmit = async (data: CreateJobOfferInput) => {
     try {
       const res = await createJobOffer.mutateAsync({
         ...data,
-        companyProfileID: companyProfile.id,
+        companyProfileID: companyProfile!.id,
       });
       console.log(res);
     } catch (error) {

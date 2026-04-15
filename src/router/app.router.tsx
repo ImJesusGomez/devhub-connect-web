@@ -17,6 +17,7 @@ import { DeveloperProfilePage } from "@/dashboard/developer/pages/profile/Develo
 import { CompanyWelcomePage } from "@/dashboard/company/pages/CompanyWelcomePage";
 import { CompanyUserPage } from "@/dashboard/company/pages/profile/CompanyUserPage";
 import { DeveloperWelcomePage } from "@/dashboard/developer/pages/DeveloperWelcomePage";
+import { FindDevelopersPage } from "@/dashboard/company/pages/developers/FindDevelopersPage";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: "create-job-offer",
         element: <CreateJobOfferPage />,
+      },
+      {
+        path: "find-developers",
+        element: <FindDevelopersPage />,
       },
     ],
   },

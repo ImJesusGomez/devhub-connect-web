@@ -24,7 +24,7 @@ export const companyData = {
   developers: [
     {
       title: "Buscar Desarrolladores",
-      url: "#",
+      url: "/company-dashboard/find-developers",
       icon: <UserSearch />,
     },
   ],

@@ -6,8 +6,11 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { EmptyState } from "../../components/EmptyState";
 import { JobCard } from "../../components/JobCard";
 import type { JobOffer } from "@/interfaces/job-offer.interface";
+import { useHasCompanyProfile } from "../../hooks/useHasCompanyProfile";
+import { WithoutProfile } from "@/components/custom/WithoutProfile";
 
 export const JobOffersPage = () => {
+  const { data: hasProfile } = useHasCompanyProfile();
   const { data: companyProfile } = useGetCompanyProfile();
 
   const [search, setSearch] = useState("");
@@ -21,7 +24,9 @@ export const JobOffersPage = () => {
 
   const jobs = jobOffers?.content ?? [];
 
-  return (
+  return !hasProfile ? (
+    <WithoutProfile profileType="Empresa" to="/company-dashboard/create-profile" />
+  ) : (
     <div className="max-w-6xl px-6 py-10 space-y-8">
       {/* HEADER */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
