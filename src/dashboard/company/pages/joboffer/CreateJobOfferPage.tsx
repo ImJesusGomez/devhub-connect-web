@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -13,10 +13,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Controller, useForm } from "react-hook-form";
 import type { CreateJobOfferInput } from "../../actions/create-job-offer.action";
-import { InputErrors } from "@/components/custom/InputErrors";
-
 import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
-import { useGetProfile } from "@/hooks/useGetProfile";
 import { useCreateJobOffer } from "../../hooks/useCreateJobOffer";
 import { Link } from "react-router";
 
@@ -28,8 +25,7 @@ export const CreateJobOfferPage = () => {
     formState: { errors, isSubmitting },
   } = useForm<CreateJobOfferInput>();
 
-  const { data: user } = useGetProfile();
-  const { data: companyProfile } = useGetCompanyProfile(true, user?.id);
+  const { data: companyProfile } = useGetCompanyProfile();
 
   const createJobOffer = useCreateJobOffer();
 
@@ -70,7 +66,7 @@ export const CreateJobOfferPage = () => {
               },
             })}
           />
-          {errors.position && <InputErrors error={errors.position.message} />}
+          {errors.position && <FieldError>{errors.position.message}</FieldError>}
         </Field>
 
         <div className="flex flex-row justify-between gap-10">
@@ -85,7 +81,7 @@ export const CreateJobOfferPage = () => {
                 required: "El salario es obligatorio.",
               })}
             />
-            {errors.salary && <InputErrors error={errors.salary.message} />}
+            {errors.salary && <FieldError>{errors.salary.message}</FieldError>}
           </Field>
 
           {/* currency */}
@@ -112,7 +108,7 @@ export const CreateJobOfferPage = () => {
                 </Select>
               )}
             />
-            {errors.currency && <InputErrors error={errors.currency.message} />}
+            {errors.currency && <FieldError>{errors.currency.message}</FieldError>}
           </Field>
         </div>
 
@@ -145,7 +141,7 @@ export const CreateJobOfferPage = () => {
                 </Select>
               )}
             />
-            {errors.contractType && <InputErrors error={errors.contractType.message} />}
+            {errors.contractType && <FieldError>{errors.contractType.message}</FieldError>}
           </Field>
 
           {/* workMode */}
@@ -172,7 +168,7 @@ export const CreateJobOfferPage = () => {
                 </Select>
               )}
             />
-            {errors.workMode && <InputErrors error={errors.workMode.message} />}
+            {errors.workMode && <FieldError>{errors.workMode.message}</FieldError>}
           </Field>
 
           {/* experienceLevel */}
@@ -201,7 +197,7 @@ export const CreateJobOfferPage = () => {
                 </Select>
               )}
             />
-            {errors.experienceLevel && <InputErrors error={errors.experienceLevel.message} />}
+            {errors.experienceLevel && <FieldError>{errors.experienceLevel.message}</FieldError>}
           </Field>
         </div>
 
@@ -214,7 +210,7 @@ export const CreateJobOfferPage = () => {
               required: "La descripción es obligatoria.",
             })}
           />
-          {errors.description && <InputErrors error={errors.description.message} />}
+          {errors.description && <FieldError>{errors.description.message}</FieldError>}
         </Field>
 
         {/* minEducation */}
@@ -235,7 +231,7 @@ export const CreateJobOfferPage = () => {
               },
             })}
           />
-          {errors.minEducation && <InputErrors error={errors.minEducation.message} />}
+          {errors.minEducation && <FieldError>{errors.minEducation.message}</FieldError>}
         </Field>
 
         {/* minExperienceYears */}
@@ -249,7 +245,9 @@ export const CreateJobOfferPage = () => {
               required: "La experiencia requerida mínima requerida en años es obligatoria.",
             })}
           />
-          {errors.minExperienceYears && <InputErrors error={errors.minExperienceYears.message} />}
+          {errors.minExperienceYears && (
+            <FieldError>{errors.minExperienceYears.message}</FieldError>
+          )}
         </Field>
 
         {/* requiredSkills */}
@@ -261,7 +259,7 @@ export const CreateJobOfferPage = () => {
               required: "Las habilidades requeridas son obligatorias.",
             })}
           />
-          {errors.requiredSkills && <InputErrors error={errors.requiredSkills.message} />}
+          {errors.requiredSkills && <FieldError>{errors.requiredSkills.message}</FieldError>}
         </Field>
 
         {/* requiredLanguages */}
@@ -273,7 +271,7 @@ export const CreateJobOfferPage = () => {
               required: "Los lengaujes requeridos son obligatorios.",
             })}
           />
-          {errors.requiredLanguages && <InputErrors error={errors.requiredLanguages.message} />}
+          {errors.requiredLanguages && <FieldError>{errors.requiredLanguages.message}</FieldError>}
         </Field>
 
         {/* age*/}
@@ -289,7 +287,7 @@ export const CreateJobOfferPage = () => {
                 required: "La edad mínima es obligatoria.",
               })}
             />
-            {errors.minAge && <InputErrors error={errors.minAge.message} />}
+            {errors.minAge && <FieldError>{errors.minAge.message}</FieldError>}
           </Field>
 
           {/* maxAge */}
@@ -302,7 +300,7 @@ export const CreateJobOfferPage = () => {
                 required: "La edad máxima es obligatoria.",
               })}
             />
-            {errors.maxAge && <InputErrors error={errors.maxAge.message} />}
+            {errors.maxAge && <FieldError>{errors.maxAge.message}</FieldError>}
           </Field>
         </div>
 

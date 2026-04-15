@@ -1,19 +1,13 @@
-import { useAuthStore } from "@/store/auth.store";
-import { DontHaveProfile } from "../../components/DontHaveProfile";
+import { WithoutProfile } from "@/components/custom/WithoutProfile";
 import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
 import { useHasCompanyProfile } from "../../hooks/useHasCompanyProfile";
 
 export const CompanyProfilePage = () => {
-  const user = useAuthStore((state) => state.user);
-
   const { data: hasProfile, isLoading: loadingHas } = useHasCompanyProfile();
 
   const shouldFetchProfile = hasProfile === true;
 
-  const { data: profile, isLoading: loadingProfile } = useGetCompanyProfile(
-    shouldFetchProfile,
-    user?.id,
-  );
+  const { data: profile, isLoading: loadingProfile } = useGetCompanyProfile(shouldFetchProfile);
 
   const isLoading = loadingHas || (shouldFetchProfile && loadingProfile);
 
@@ -30,7 +24,7 @@ export const CompanyProfilePage = () => {
   }
 
   if (hasProfile === false) {
-    return <DontHaveProfile />;
+    return <WithoutProfile profileType="Empresa" to="/company-dashboard/create-profile" />;
   }
 
   if (!profile) {

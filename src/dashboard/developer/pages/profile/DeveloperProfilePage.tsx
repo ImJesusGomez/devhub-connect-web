@@ -1,16 +1,16 @@
-import { useGetProfile } from "@/hooks/useGetProfile";
 import { useHasDeveloperProfile } from "../../hooks/useHasDeveloperProfile";
 import { useGetDeveloperProfile } from "../../hooks/useGetDeveloperProfile";
 import { Link } from "react-router";
+import { Info } from "@/components/custom/Info";
+import { Card } from "@/components/custom/Card";
+import { Badge } from "@/components/custom/Badge";
 
 export const DeveloperProfilePage = () => {
-  const { data: user } = useGetProfile();
-
-  const { data: hasProfile, isLoading: loadingHas } = useHasDeveloperProfile(user?.id || "");
+  const { data: hasProfile, isLoading: loadingHas } = useHasDeveloperProfile();
 
   const shouldFetchProfile = hasProfile === true;
 
-  const { data: profile, isLoading: loadingProfile } = useGetDeveloperProfile(user?.id || "");
+  const { data: profile, isLoading: loadingProfile } = useGetDeveloperProfile();
 
   const isLoading = loadingHas || (shouldFetchProfile && loadingProfile);
 
@@ -90,34 +90,6 @@ export const DeveloperProfilePage = () => {
     </div>
   );
 };
-
-/* ---------------- UI COMPONENTS ---------------- */
-
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-6 space-y-4">
-      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-      {children}
-    </div>
-  );
-}
-
-function Info({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex justify-between py-2 border-b last:border-b-0">
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="text-gray-900 font-medium text-sm">{value || "—"}</span>
-    </div>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="px-3 py-1 rounded-full bg-white/10 text-white text-sm backdrop-blur">
-      {children}
-    </span>
-  );
-}
 
 /* ---------------- FORMATTERS ---------------- */
 

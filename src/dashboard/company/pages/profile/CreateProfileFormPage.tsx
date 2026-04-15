@@ -1,7 +1,6 @@
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import { InputErrors } from "@/components/custom/InputErrors";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -58,7 +57,7 @@ export const CreateProfileFormPage = () => {
                 },
               })}
             />
-            {errors.companyName && <InputErrors error={errors.companyName.message} />}
+            {errors.companyName && <FieldError>{errors.companyName.message}</FieldError>}
           </Field>
 
           {/* Description */}
@@ -74,7 +73,7 @@ export const CreateProfileFormPage = () => {
                 },
               })}
             />
-            {errors.description && <InputErrors error={errors.description.message} />}
+            {errors.description && <FieldError>{errors.description.message}</FieldError>}
           </Field>
 
           {/* TaxId */}
@@ -91,7 +90,7 @@ export const CreateProfileFormPage = () => {
                 },
               })}
             />
-            {errors.taxId && <InputErrors error={errors.taxId.message} />}
+            {errors.taxId && <FieldError>{errors.taxId.message}</FieldError>}
           </Field>
 
           {/* Country */}
@@ -105,7 +104,7 @@ export const CreateProfileFormPage = () => {
                 required: "El país es obligatorio.",
               })}
             />
-            {errors.country && <InputErrors error={errors.country.message} />}
+            {errors.country && <FieldError>{errors.country.message}</FieldError>}
           </Field>
 
           {/* state */}
@@ -118,7 +117,7 @@ export const CreateProfileFormPage = () => {
                 required: "El Estado es obligatorio.",
               })}
             />
-            {errors.state && <InputErrors error={errors.state.message} />}
+            {errors.state && <FieldError>{errors.state.message}</FieldError>}
           </Field>
 
           {/* city */}
@@ -131,7 +130,7 @@ export const CreateProfileFormPage = () => {
                 required: "La Ciudad es obligatoria.",
               })}
             />
-            {errors.city && <InputErrors error={errors.city.message} />}
+            {errors.city && <FieldError>{errors.city.message}</FieldError>}
           </Field>
 
           {/* website */}
@@ -149,7 +148,7 @@ export const CreateProfileFormPage = () => {
               })}
             />
 
-            {errors.website && <InputErrors error={errors.website.message} />}
+            {errors.website && <FieldError>{errors.website.message}</FieldError>}
           </Field>
 
           {/* Size */}
@@ -180,7 +179,7 @@ export const CreateProfileFormPage = () => {
               )}
             />
 
-            {errors.size && <InputErrors error={errors.size.message} />}
+            {errors.size && <FieldError>{errors.size.message}</FieldError>}
           </Field>
 
           <Field>

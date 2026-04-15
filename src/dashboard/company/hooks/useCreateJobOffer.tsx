@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 export const useCreateJobOffer = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+
   return useMutation({
     mutationKey: ["createJobOffer"],
     mutationFn: createJobOfferAction,

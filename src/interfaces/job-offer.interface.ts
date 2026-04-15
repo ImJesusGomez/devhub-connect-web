@@ -5,10 +5,10 @@ export interface JobOffer {
   position: string;
   salary: number;
   currency: string;
-  contractType: string;
-  workMode: string;
+  contractType: ContractType;
+  workMode: WorkMode;
   description: string;
-  experienceLevel: string;
+  experienceLevel: ExperienceLevel;
   minEducation: string;
   minExperienceYears: number;
   requiredSkills: string;
@@ -18,3 +18,17 @@ export interface JobOffer {
   status: string;
   companyProfile: CompanyProfile;
 }
+
+export type ContractType =
+  | "FULL_TIME"
+  | "PART_TIME"
+  | "CONTRACT"
+  | "FREELANCE"
+  | "TEMPORARY"
+  | "INTERNSHIP";
+
+export type WorkMode = "REMOTE" | "ONSITE" | "HYBRID";
+
+export type ExperienceLevel = "INTERN" | "JUNIOR" | "MID_LEVEL" | "SENIOR" | "LEAD";
+
+export type Status = "ACTIVE" | "CLOSED" | "PAUSED" | "DRAFT";

@@ -1,3 +1,7 @@
+import { Avatar } from "@/components/custom/Avatar";
+import { Badge } from "@/components/custom/Badge";
+import { Card } from "@/components/custom/Card";
+import { Info } from "@/components/custom/Info";
 import { useGetProfile } from "@/hooks/useGetProfile";
 
 export const DeveloperUserPage = () => {
@@ -68,41 +72,3 @@ export const DeveloperUserPage = () => {
     </div>
   );
 };
-
-/* ---------------- UI COMPONENTS ---------------- */
-
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-6 space-y-4">
-      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-      {children}
-    </div>
-  );
-}
-
-function Info({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex justify-between py-2 border-b last:border-b-0">
-      <span className="text-gray-500 text-sm">{label}</span>
-      <span className="text-gray-900 font-medium text-sm">{value || "—"}</span>
-    </div>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="px-3 py-1 rounded-full bg-white/10 text-white text-sm backdrop-blur">
-      {children}
-    </span>
-  );
-}
-
-function Avatar({ name }: { name: string }) {
-  const initial = name?.charAt(0)?.toUpperCase() || "?";
-
-  return (
-    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-bold text-lg">
-      {initial}
-    </div>
-  );
-}

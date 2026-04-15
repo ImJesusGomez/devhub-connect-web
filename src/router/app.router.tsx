@@ -6,9 +6,7 @@ import { CreateJobOfferPage } from "@/dashboard/company/pages/joboffer/CreateJob
 import { JobOffersPage } from "@/dashboard/company/pages/joboffer/JobOffersPage";
 import { CompanyProfilePage } from "@/dashboard/company/pages/profile/CompanyProfilePage";
 import { CreateProfileFormPage } from "@/dashboard/company/pages/profile/CreateProfileFormPage";
-import { UserProfile } from "@/dashboard/company/pages/profile/UserProfile";
-import { WelcomePage as CompanyWelcomePage } from "@/dashboard/company/pages/WelcomePage";
-import { WelcomePage as DeveloperWelcomePage } from "@/dashboard/developer/pages/WelcomePage";
+
 import { DeveloperLayout } from "@/dashboard/developer/layouts/DeveloperLayout";
 import { HomeLayout } from "@/home/layout/HomeLayout";
 import { HomePage } from "@/home/pages/HomePage";
@@ -16,6 +14,9 @@ import { createBrowserRouter } from "react-router";
 import { CreateDeveloperProfilePage } from "@/dashboard/developer/pages/profile/CreateDeveloperProfilePage";
 import { DeveloperUserPage } from "@/dashboard/developer/pages/profile/DeveloperUserPage";
 import { DeveloperProfilePage } from "@/dashboard/developer/pages/profile/DeveloperProfilePage";
+import { CompanyWelcomePage } from "@/dashboard/company/pages/CompanyWelcomePage";
+import { CompanyUserPage } from "@/dashboard/company/pages/profile/CompanyUserPage";
+import { DeveloperWelcomePage } from "@/dashboard/developer/pages/DeveloperWelcomePage";
 
 export const router = createBrowserRouter([
   {
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "user",
-        element: <UserProfile />,
+        element: <CompanyUserPage />,
       },
       {
         path: "job-offers",

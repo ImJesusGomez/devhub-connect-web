@@ -1,10 +1,6 @@
-export const WelcomePage = () => {
-  // const { data: hasProfile, isLoading } = useHasCompanyProfile();
+import { FeatureCard } from "@/components/custom/FeatureCard";
 
-  // if (isLoading) {
-  //   return <p>Cargando...</p>;
-  // }
-
+export const DeveloperWelcomePage = () => {
   return (
     <div className="min-h-screen  px-6 py-12">
       <div className="max-w-5xl mx-auto space-y-10">
@@ -32,27 +28,7 @@ export const WelcomePage = () => {
             desc="Las empresas top en tecnología usan esta plataforma."
           />
         </div>
-
-        {/* ALERT / PROFILE STATE */}
-        {/* {!hasProfile && (
-          <div className="flex justify-center">
-            <div className="w-full max-w-xl">
-              <DontHaveProfile />
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   );
 };
-
-/* ---------------- UI COMPONENTS ---------------- */
-
-function FeatureCard({ title, desc }: { title: string; desc: string }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-      <p className="text-gray-600 text-sm mt-2">{desc}</p>
-    </div>
-  );
-}

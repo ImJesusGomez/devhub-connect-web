@@ -20,8 +20,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Controller, useForm } from "react-hook-form";
 import type { CreateDeveloperProfileInput } from "../../actions/create-developer-profile.action";
 import { useCreateDeveloperProfile } from "../../hooks/useCreateDeveloperProfile";
-import { useGetProfile } from "@/hooks/useGetProfile";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/store/auth.store";
 
 export const CreateDeveloperProfilePage = () => {
   const {
@@ -31,7 +31,7 @@ export const CreateDeveloperProfilePage = () => {
     formState: { errors, isSubmitting },
   } = useForm<CreateDeveloperProfileInput>();
 
-  const { data: user } = useGetProfile();
+  const user = useAuthStore((state) => state.user);
 
   const createProfileMutation = useCreateDeveloperProfile();
 

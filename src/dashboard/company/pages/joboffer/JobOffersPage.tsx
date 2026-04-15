@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { useGetProfile } from "@/hooks/useGetProfile";
 import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
 import { useGetJobOffers } from "@/hooks/useGetJobOffers";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -9,8 +8,7 @@ import { JobCard } from "../../components/JobCard";
 import type { JobOffer } from "@/interfaces/job-offer.interface";
 
 export const JobOffersPage = () => {
-  const { data: user } = useGetProfile();
-  const { data: companyProfile } = useGetCompanyProfile(true, user?.id);
+  const { data: companyProfile } = useGetCompanyProfile();
 
   const [search, setSearch] = useState("");
 

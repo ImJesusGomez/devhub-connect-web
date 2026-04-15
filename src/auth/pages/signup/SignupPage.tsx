@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
@@ -34,9 +35,13 @@ export const SignupPage = () => {
 
   const onSubmit = async (data: SignupInput) => {
     try {
-      console.log({ data });
-      const res = await signupMutation.mutateAsync(data);
-      console.log({ res });
+      await signupMutation.mutateAsync({
+        firstName: data.firstName.trim(),
+        lastName: data.lastName.trim(),
+        email: data.email.trim(),
+        password: data.password.trim(),
+        roles: data.roles,
+      });
     } catch (error) {
       setError("email", {
         type: "manual",
@@ -58,10 +63,9 @@ export const SignupPage = () => {
             id="firstName"
             type="text"
             placeholder="Ana Camila"
-            required
             className="bg-background"
             {...register("firstName", {
-              required: "Nombre es requerido",
+              required: "Nombre es obligatorio",
               minLength: {
                 value: 1,
                 message: "El nombre debe tener al menos 1 carácter.",
@@ -72,9 +76,7 @@ export const SignupPage = () => {
               },
             })}
           />
-          {errors.firstName && (
-            <p className="text-red-400 font-medium text-sm">{errors.firstName.message}</p>
-          )}
+          {errors.firstName && <FieldError>{errors.firstName.message}</FieldError>}
         </Field>
         <Field>
           <FieldLabel htmlFor="lastName">Apellidos</FieldLabel>
@@ -82,10 +84,9 @@ export const SignupPage = () => {
             id="lastName"
             type="text"
             placeholder="Balderas Aguilar"
-            required
             className="bg-background"
             {...register("lastName", {
-              required: "Apellidos son requeridos.",
+              required: "Apellidos son obligatorios.",
               minLength: {
                 value: 1,
                 message: "El nombre debe tener al menos 1 carácter.",
@@ -96,9 +97,7 @@ export const SignupPage = () => {
               },
             })}
           />
-          {errors.lastName && (
-            <p className="text-red-400 font-medium text-sm">{errors.lastName.message}</p>
-          )}
+          {errors.lastName && <FieldError>{errors.lastName.message}</FieldError>}
         </Field>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -106,29 +105,25 @@ export const SignupPage = () => {
             id="email"
             type="email"
             placeholder="correo@example.com"
-            required
             className="bg-background"
             {...register("email", {
-              required: "Correo Eléctronico es requerido.",
+              required: "Correo Eléctronico es obligatorio.",
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: "Correo electrónico no válido",
               },
             })}
           />
-          {errors.email && (
-            <p className="text-red-400 font-medium text-sm">{errors.email.message}</p>
-          )}
+          {errors.email && <FieldError>{errors.email.message}</FieldError>}
         </Field>
         <Field>
           <FieldLabel htmlFor="password">Contraseña</FieldLabel>
           <Input
             id="password"
             type="password"
-            required
             className="bg-background"
             {...register("password", {
-              required: "Contraseña es requerida.",
+              required: "Contraseña es obligatoria.",
               minLength: {
                 value: 9,
                 message: "El nombre debe tener al menos 9 caracteres.",
@@ -136,30 +131,28 @@ export const SignupPage = () => {
             })}
           />
           <FieldDescription>Debe tener más de 8 caracteres</FieldDescription>
-          {errors.password && (
-            <p className="text-red-400 font-medium text-sm">{errors.password.message}</p>
-          )}
+          {errors.password && <FieldError>{errors.password.message}</FieldError>}
         </Field>
         <Field>
           <FieldLabel htmlFor="confirm-password">Confirmar Contraseña</FieldLabel>
           <Input
             id="confirm-password"
             type="password"
-            required
             className="bg-background"
             {...register("confirmPassword", {
-              required: "Confirmar contraseña es requerida.",
+              required: "Confirmar contraseña es obligatoria.",
               validate: (value) =>
                 value === getValues("password") || "Las contraseñas no coinciden",
             })}
           />
           <FieldDescription>Por favor, confirma tu contraseña</FieldDescription>
+          {errors.confirmPassword && <FieldError>{errors.confirmPassword.message}</FieldError>}
         </Field>
 
         <Controller
           name="roles"
           control={control}
-          rules={{ required: "Selecciona un tipo de cuenta" }}
+          rules={{ required: "Debes seleccionar un tipo de cuenta." }}
           render={({ field }) => (
             <RadioGroup value={field.value?.[0]} onValueChange={(value) => field.onChange([value])}>
               <FieldSet className="w-full max-w-xs">
@@ -185,7 +178,7 @@ export const SignupPage = () => {
             </RadioGroup>
           )}
         />
-        {errors.roles && <p className="text-red-400 font-medium text-sm">{errors.roles.message}</p>}
+        {errors.roles && <FieldError>{errors.roles.message}</FieldError>}
 
         <Field>
           <Button type="submit" disabled={isSubmitting}>
