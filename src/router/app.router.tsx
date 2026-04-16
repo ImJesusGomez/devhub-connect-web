@@ -5,7 +5,7 @@ import { CompanyLayout } from "@/dashboard/company/layouts/CompanyLayout";
 import { CreateJobOfferPage } from "@/dashboard/company/pages/joboffer/CreateJobOfferPage";
 import { JobOffersPage } from "@/dashboard/company/pages/joboffer/JobOffersPage";
 import { CompanyProfilePage } from "@/dashboard/company/pages/profile/CompanyProfilePage";
-import { CreateProfileFormPage } from "@/dashboard/company/pages/profile/CreateProfileFormPage";
+import { CreateCompanyProfilePage } from "@/dashboard/company/pages/profile/CreateCompanyProfilePage";
 
 import { DeveloperLayout } from "@/dashboard/developer/layouts/DeveloperLayout";
 import { HomeLayout } from "@/home/layout/HomeLayout";
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "create-profile",
-        element: <CreateProfileFormPage />,
+        element: <CreateCompanyProfilePage />,
       },
       {
         path: "user",

@@ -1,4 +1,4 @@
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Field, FieldDescription, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import type { CreateCompanyProfileInput } from "../../actions/create-company-profile.action";
 import { useCreateCompanyProfile } from "../../hooks/useCreateCompanyProfile";
 
-export const CreateProfileFormPage = () => {
+export const CreateCompanyProfilePage = () => {
   const {
     register,
     handleSubmit,
@@ -149,6 +149,30 @@ export const CreateProfileFormPage = () => {
             />
 
             {errors.website && <FieldError>{errors.website.message}</FieldError>}
+          </Field>
+
+          {/* companyEmail */}
+          <Field className="mb-6">
+            <FieldLabel htmlFor="companyEmail">Correo de Empresa</FieldLabel>
+
+            <Input
+              id="companyEmail"
+              type="companyEmail"
+              placeholder="correo@example.com"
+              className="bg-background"
+              {...register("companyEmail", {
+                required: "Correo Eléctronico es obligatorio.",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Correo electrónico no válido",
+                },
+              })}
+            />
+            <FieldDescription>
+              Importante: Este será el correo que usarás como empresa. Asegúrate de tenerlo creado
+              previamente, ya que será el medio para contactar con otros desarrolladores.
+            </FieldDescription>
+            {errors.companyEmail && <FieldError>{errors.companyEmail.message}</FieldError>}
           </Field>
 
           {/* Size */}

@@ -9,6 +9,7 @@ export interface CompanyProfile {
   state: string;
   city: string;
   website: string;
+  companyEmail: string;
   size: Size;
   user: User;
 }

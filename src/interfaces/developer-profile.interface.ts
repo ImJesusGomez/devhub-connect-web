@@ -7,6 +7,7 @@ export interface DeveloperProfile {
   level: Level;
   preferredWorkMode: PreferredWorkMode;
   description: string;
+  developerEmail: string;
   availability: Availability;
   user: User;
 }

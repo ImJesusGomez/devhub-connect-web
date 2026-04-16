@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+import { useGetCompanyProfile } from "../hooks/useGetCompanyProfile";
+import { ContactDialog } from "./ContactDialog";
 
 const LEVEL_LABEL: Record<string, string> = {
   INTERN: "Intern",
@@ -24,6 +26,10 @@ interface Props {
 }
 
 export const DevelopersTable = ({ developers, isLoading }: Props) => {
+  const { data: profile } = useGetCompanyProfile();
+
+  if (!profile) return null;
+
   if (isLoading) {
     return (
       <div className="space-y-2">
@@ -72,9 +78,7 @@ export const DevelopersTable = ({ developers, isLoading }: Props) => {
                 </Badge>
               </TableCell>
               <TableCell>
-                <Badge variant="link" className="cursor-pointer text-cyan-800 text-center">
-                  Contactar
-                </Badge>
+                <ContactDialog dev={dev} />
               </TableCell>
             </TableRow>
           ))

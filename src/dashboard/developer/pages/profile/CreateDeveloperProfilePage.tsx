@@ -60,7 +60,7 @@ export const CreateDeveloperProfilePage = () => {
               type="text"
               placeholder="Ej: Java, Spring Boot, React, PostgreSQL..."
               {...register("techStack", {
-                required: "Las tecnologías son obligatorias.",
+                required: "Tecnologías son obligatorias.",
               })}
             />
             <FieldDescription>
@@ -95,7 +95,7 @@ export const CreateDeveloperProfilePage = () => {
               <Controller
                 control={control}
                 name="level"
-                rules={{ required: "Nivel es obligatorip" }}
+                rules={{ required: "Nivel es obligatorio." }}
                 render={({ field }) => (
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <SelectTrigger id="level" className="w-full max-w-48">
@@ -169,9 +169,35 @@ export const CreateDeveloperProfilePage = () => {
               {errors.availability && <FieldError>{errors.availability.message}</FieldError>}
             </Field>
           </FieldGroup>
+
+          {/* companyEmail */}
+          <Field className="mb-6">
+            <FieldLabel htmlFor="developerEmail">Correo de Desarrollador</FieldLabel>
+
+            <Input
+              id="developerEmail"
+              type="developerEmail"
+              placeholder="correo@example.com"
+              className="bg-background"
+              {...register("developerEmail", {
+                required: "Correo Eléctronico es obligatorio.",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Correo electrónico no válido",
+                },
+              })}
+            />
+            <FieldDescription>
+              Importante: Este correo será el medio por el cual las empresas podrán contactarte, por
+              lo que debes tenerlo previamente creado. Puede ser el mismo correo electrónico con el
+              que registraste tu cuenta como usuario.
+            </FieldDescription>
+            {errors.developerEmail && <FieldError>{errors.developerEmail.message}</FieldError>}
+          </Field>
+
           {/* description */}
           <Field>
-            <FieldLabel htmlFor="description">Description</FieldLabel>
+            <FieldLabel htmlFor="description">Descripción</FieldLabel>
             <Textarea
               id="description"
               {...register("description", {
@@ -184,6 +210,7 @@ export const CreateDeveloperProfilePage = () => {
             </FieldDescription>
             {errors.description && <FieldError>{errors.description.message}</FieldError>}
           </Field>
+
           <Field>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Creando..." : "Crear"}
