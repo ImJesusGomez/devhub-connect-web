@@ -69,8 +69,9 @@ export const DeveloperProfilePage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card title="Información profesional">
           <Info label="Tech Stack" value={profile.techStack} />
-          <Info label="Experiencia" value={`${profile.yearsOfExperience} años`} />
+          <Info label="Experiencia" value={`${profile.yearsOfExperience} año(s)`} />
           <Info label="Nivel" value={formatLevel(profile.level)} />
+          <Info label="Correo Electrónico" value={profile.developerEmail} />
         </Card>
 
         <Card title="Preferencias laborales">
@@ -96,7 +97,7 @@ export const DeveloperProfilePage = () => {
 const formatLevel = (level?: string) => {
   switch (level) {
     case "INTERN":
-      return "Intern";
+      return "Practicante";
     case "JUNIOR":
       return "Junior";
     case "MID_LEVEL":

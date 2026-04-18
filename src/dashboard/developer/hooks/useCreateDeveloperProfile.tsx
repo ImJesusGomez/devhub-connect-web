@@ -12,7 +12,7 @@ export const useCreateDeveloperProfile = () => {
     onSuccess: () => {
       // Cancelamos otras queries
       queryClient.invalidateQueries({
-        queryKey: ["hasCompanyProfile"],
+        queryKey: ["hasDeveloperProfile"],
       });
 
       // Mostramos mensaje de éxito
