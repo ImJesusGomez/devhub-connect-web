@@ -1,5 +1,5 @@
 import { useHasDeveloperProfile } from "../../hooks/useHasDeveloperProfile";
-import { useGetDeveloperProfile } from "../../hooks/useGetDeveloperProfile";
+import { useGetDeveloperProfileByUser } from "../../hooks/useGetDeveloperProfileByUser";
 import { Link } from "react-router";
 import { Info } from "@/components/custom/Info";
 import { Card } from "@/components/custom/Card";
@@ -10,7 +10,7 @@ export const DeveloperProfilePage = () => {
 
   const shouldFetchProfile = hasProfile === true;
 
-  const { data: profile, isLoading: loadingProfile } = useGetDeveloperProfile();
+  const { data: profile, isLoading: loadingProfile } = useGetDeveloperProfileByUser();
 
   const isLoading = loadingHas || (shouldFetchProfile && loadingProfile);
 
@@ -82,7 +82,7 @@ export const DeveloperProfilePage = () => {
 
       <div className="flex justify-end">
         <Link
-          to="/developer-dashboard/edit-profile"
+          to={`/developer-dashboard/edit-profile/${profile.id}`}
           className="px-5 py-2 rounded-xl border hover:bg-gray-100 transition text-sm"
         >
           Editar perfil
