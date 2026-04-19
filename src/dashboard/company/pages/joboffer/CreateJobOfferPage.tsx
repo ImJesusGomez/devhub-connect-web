@@ -13,7 +13,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Controller, useForm } from "react-hook-form";
 import type { CreateJobOfferInput } from "../../actions/create-job-offer.action";
-import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
+import { useGetCompanyProfileByUser } from "../../hooks/useGetCompanyProfileByUser";
 import { useCreateJobOffer } from "../../hooks/useCreateJobOffer";
 import { Link, useNavigate } from "react-router";
 import { useHasCompanyProfile } from "../../hooks/useHasCompanyProfile";
@@ -31,7 +31,7 @@ export const CreateJobOfferPage = () => {
 
   const createJobOffer = useCreateJobOffer();
 
-  const { data: companyProfile } = useGetCompanyProfile();
+  const { data: companyProfile } = useGetCompanyProfileByUser();
   const { data: hasProfile, isLoading } = useHasCompanyProfile();
 
   useEffect(() => {

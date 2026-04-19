@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import type { SendEmailInput } from "../actions/send-email.action";
 import { Textarea } from "@/components/ui/textarea";
 import { useSendEmail } from "../hooks/useSendEmail";
-import { useGetCompanyProfile } from "../hooks/useGetCompanyProfile";
+import { useGetCompanyProfileByUser } from "../hooks/useGetCompanyProfileByUser";
 import type { DeveloperProfile } from "@/interfaces/developer-profile.interface";
 
 interface Props {
@@ -35,7 +35,7 @@ export const ContactDialog = ({ dev }: Props) => {
   });
 
   const sendEmailMutation = useSendEmail();
-  const { data: profile } = useGetCompanyProfile();
+  const { data: profile } = useGetCompanyProfileByUser();
 
   const onSubmit = async (data: SendEmailInput) => {
     try {

@@ -1,13 +1,15 @@
 import { WithoutProfile } from "@/components/custom/WithoutProfile";
-import { useGetCompanyProfile } from "../../hooks/useGetCompanyProfile";
+import { useGetCompanyProfileByUser } from "../../hooks/useGetCompanyProfileByUser";
 import { useHasCompanyProfile } from "../../hooks/useHasCompanyProfile";
+import { Link } from "react-router";
 
 export const CompanyProfilePage = () => {
   const { data: hasProfile, isLoading: loadingHas } = useHasCompanyProfile();
 
   const shouldFetchProfile = hasProfile === true;
 
-  const { data: profile, isLoading: loadingProfile } = useGetCompanyProfile(shouldFetchProfile);
+  const { data: profile, isLoading: loadingProfile } =
+    useGetCompanyProfileByUser(shouldFetchProfile);
 
   const isLoading = loadingHas || (shouldFetchProfile && loadingProfile);
 
@@ -73,6 +75,15 @@ export const CompanyProfilePage = () => {
           <span className="font-medium text-gray-900">Email:</span> {profile.user.email}
         </p>
       </Card>
+
+      <div className="flex justify-end">
+        <Link
+          to={`/company-dashboard/edit-profile/${profile.id}`}
+          className="px-5 py-2 rounded-xl border hover:bg-gray-100 transition text-sm"
+        >
+          Editar perfil
+        </Link>
+      </div>
     </div>
   );
 };

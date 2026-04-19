@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
-import { useGetCompanyProfile } from "../hooks/useGetCompanyProfile";
+import { useGetCompanyProfileByUser } from "../hooks/useGetCompanyProfileByUser";
 import { ContactDialog } from "./ContactDialog";
 
 const LEVEL_LABEL: Record<string, string> = {
@@ -26,7 +26,7 @@ interface Props {
 }
 
 export const DevelopersTable = ({ developers, isLoading }: Props) => {
-  const { data: profile } = useGetCompanyProfile();
+  const { data: profile } = useGetCompanyProfileByUser();
 
   if (!profile) return null;
 

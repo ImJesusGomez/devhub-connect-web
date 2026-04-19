@@ -20,6 +20,7 @@ import { DeveloperWelcomePage } from "@/dashboard/developer/pages/DeveloperWelco
 import { FindDevelopersPage } from "@/dashboard/company/pages/developers/FindDevelopersPage";
 import { SearchJobOffersPage } from "@/dashboard/developer/pages/joboffers/SearchJobOffersPage";
 import { UpdateDeveloperProfilePage } from "@/dashboard/developer/pages/profile/UpdateDeveloperProfilePage";
+import { UpdateCompanyProfilePage } from "@/dashboard/company/pages/profile/UpdateCompanyProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "create-profile",
         element: <CreateCompanyProfilePage />,
+      },
+      {
+        path: "edit-profile/:id",
+        element: <UpdateCompanyProfilePage />,
       },
       {
         path: "user",
