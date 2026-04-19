@@ -18,6 +18,7 @@ import { CompanyWelcomePage } from "@/dashboard/company/pages/CompanyWelcomePage
 import { CompanyUserPage } from "@/dashboard/company/pages/profile/CompanyUserPage";
 import { DeveloperWelcomePage } from "@/dashboard/developer/pages/DeveloperWelcomePage";
 import { FindDevelopersPage } from "@/dashboard/company/pages/developers/FindDevelopersPage";
+import { SearchJobOffersPage } from "@/dashboard/developer/pages/joboffers/SearchJobOffersPage";
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
       {
         path: "user",
         element: <DeveloperUserPage />,
+      },
+      {
+        path: "search-job-offers",
+        element: <SearchJobOffersPage />,
       },
     ],
   },

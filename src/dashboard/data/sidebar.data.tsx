@@ -47,7 +47,7 @@ export const developerData = {
   joboffers: [
     {
       title: "Buscar Ofertas Laborales",
-      url: "#",
+      url: "/developer-dashboard/search-job-offers",
       icon: <BriefcaseBusiness />,
     },
   ],
