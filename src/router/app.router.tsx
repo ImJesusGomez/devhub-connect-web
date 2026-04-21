@@ -6,7 +6,6 @@ import { CreateJobOfferPage } from "@/dashboard/company/pages/joboffer/CreateJob
 import { JobOffersPage } from "@/dashboard/company/pages/joboffer/JobOffersPage";
 import { CompanyProfilePage } from "@/dashboard/company/pages/profile/CompanyProfilePage";
 import { CreateCompanyProfilePage } from "@/dashboard/company/pages/profile/CreateCompanyProfilePage";
-
 import { DeveloperLayout } from "@/dashboard/developer/layouts/DeveloperLayout";
 import { HomeLayout } from "@/home/layout/HomeLayout";
 import { HomePage } from "@/home/pages/HomePage";
@@ -21,6 +20,7 @@ import { FindDevelopersPage } from "@/dashboard/company/pages/developers/FindDev
 import { SearchJobOffersPage } from "@/dashboard/developer/pages/joboffers/SearchJobOffersPage";
 import { UpdateDeveloperProfilePage } from "@/dashboard/developer/pages/profile/UpdateDeveloperProfilePage";
 import { UpdateCompanyProfilePage } from "@/dashboard/company/pages/profile/UpdateCompanyProfilePage";
+import { JobOfferPage } from "@/dashboard/developer/pages/joboffers/JobOfferPage";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +112,10 @@ export const router = createBrowserRouter([
       {
         path: "search-job-offers",
         element: <SearchJobOffersPage />,
+      },
+      {
+        path: "search-job-offers/:id",
+        element: <JobOfferPage />,
       },
     ],
   },

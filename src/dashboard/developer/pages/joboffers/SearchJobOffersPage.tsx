@@ -1,8 +1,8 @@
-import { JobCard } from "@/dashboard/company/components/JobCard";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useGetJobOffers } from "@/hooks/useGetJobOffers";
 import type { JobOffer } from "@/interfaces/job-offer.interface";
 import { useState } from "react";
+import { JobCardDeveloper } from "../../components/JobCardDeveloper";
 
 export const SearchJobOffersPage = () => {
   const [search, setSearch] = useState("");
@@ -47,7 +47,7 @@ export const SearchJobOffersPage = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {jobs.map((job: JobOffer) => (
-            <JobCard key={job.id} job={job} />
+            <JobCardDeveloper key={job.id} job={job} />
           ))}
         </div>
       )}
