@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { createApplicationAction } from "../actions/create-application.action";
 import { toast } from "sonner";
 import { useGetDeveloperProfileByUser } from "./useGetDeveloperProfileByUser";
+import { queryClient } from "@/DevHubConnect";
 
 export const useCreateApplication = () => {
   const { data: profile } = useGetDeveloperProfileByUser();
@@ -18,6 +19,11 @@ export const useCreateApplication = () => {
     },
     onSuccess: () => {
       toast.success("Has aplicado correctamente.");
+
+      queryClient.invalidateQueries({
+        queryKey: ["getApplications"],
+        exact: false,
+      });
     },
     onError: () => {
       toast.error("No se ha podido aplicar");

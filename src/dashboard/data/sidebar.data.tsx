@@ -54,7 +54,7 @@ export const developerData = {
   applications: [
     {
       title: "Mis Solicitudes",
-      url: "#",
+      url: "/developer-dashboard/applications",
       icon: <FileText />,
     },
   ],
