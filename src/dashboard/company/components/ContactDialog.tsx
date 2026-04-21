@@ -27,6 +27,7 @@ export const ContactDialog = ({ dev }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<SendEmailInput>({
     defaultValues: {
@@ -44,6 +45,8 @@ export const ContactDialog = ({ dev }: Props) => {
         ...data,
         from: profile!.companyEmail,
       });
+
+      reset();
       console.log(res);
     } catch (error) {
       console.log(error);

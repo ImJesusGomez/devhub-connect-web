@@ -1,3 +1,4 @@
+import type { DeveloperProfile } from "./developer-profile.interface";
 import type { JobOfferSummary } from "./job-offer-summary.interface";
 
 export interface Application {
@@ -5,6 +6,7 @@ export interface Application {
   status: StatusApplication;
   applicationDate: Date;
   jobOffer: JobOfferSummary;
+  developerProfile: DeveloperProfile;
 }
 
 export type StatusApplication =
