@@ -9,7 +9,7 @@ import { CreateCompanyProfilePage } from "@/dashboard/company/pages/profile/Crea
 import { DeveloperLayout } from "@/dashboard/developer/layouts/DeveloperLayout";
 import { HomeLayout } from "@/home/layout/HomeLayout";
 import { HomePage } from "@/home/pages/HomePage";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { CreateDeveloperProfilePage } from "@/dashboard/developer/pages/profile/CreateDeveloperProfilePage";
 import { DeveloperUserPage } from "@/dashboard/developer/pages/profile/DeveloperUserPage";
 import { DeveloperProfilePage } from "@/dashboard/developer/pages/profile/DeveloperProfilePage";
@@ -23,6 +23,7 @@ import { UpdateCompanyProfilePage } from "@/dashboard/company/pages/profile/Upda
 import { JobOfferPage } from "@/dashboard/developer/pages/joboffers/JobOfferPage";
 import { DeveloperApplications } from "@/dashboard/developer/pages/applications/DeveloperApplications";
 import { CompanyJobOffePage } from "@/dashboard/company/pages/joboffer/CompanyJobOfferPage";
+import { ProtectedRoute } from "@/components/routes/ProtectedRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/company-dashboard",
-    element: <CompanyLayout />,
+    element: (
+      <ProtectedRoute allowedRoles={["ROLE_COMPANY"]}>
+        <CompanyLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
@@ -93,7 +98,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/developer-dashboard",
-    element: <DeveloperLayout />,
+    element: (
+      <ProtectedRoute allowedRoles={["ROLE_DEVELOPER"]}>
+        <DeveloperLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
@@ -128,5 +137,9 @@ export const router = createBrowserRouter([
         element: <DeveloperApplications />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/auth/login" />,
   },
 ]);
